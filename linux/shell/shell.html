@@ -1,0 +1,4795 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="无人驾驶 slam 机器视觉 点云 传智专修学院 人工智能和机器人实验室 Linux命令、Ubuntu系统、Shell脚本、ROS、ROS架构设计">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>常用Linux命令 - 智学无人小车平台</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#linux" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <!-- <a href="../.." title="智学无人小车平台" aria-label="智学无人小车平台" class="md-header-nav__button md-logo"> -->
+        <a href="/" title="智学无人小车平台" aria-label="智学无人小车平台" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              <a href="../..">智学无人小车平台</a>
+            </span>
+            <span class="md-header-nav__topic">
+              
+                常用Linux命令
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer" style="display: none;">
+    <a href="../.." title="智学无人小车平台" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    智学无人小车平台
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      开营仪式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        开营仪式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/" title="开营介绍" class="md-nav__link">
+      开营介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/comm/" title="沟通方式" class="md-nav__link">
+      沟通方式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/lesson/" title="授课模式" class="md-nav__link">
+      授课模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/content/" title="课程内容" class="md-nav__link">
+      课程内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/learn/" title="学习方法" class="md-nav__link">
+      学习方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/qa/" title="沟通与答疑" class="md-nav__link">
+      沟通与答疑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/follow/" title="后续" class="md-nav__link">
+      后续
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      基础背景知识
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        基础背景知识
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../bk/hardware/" title="硬件知识" class="md-nav__link">
+      硬件知识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../bk/structure/" title="机械结构" class="md-nav__link">
+      机械结构
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../bk/communication/" title="通讯原理" class="md-nav__link">
+      通讯原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../bk/power/" title="电源供应" class="md-nav__link">
+      电源供应
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../assemble/assemble/" title="安装教程" class="md-nav__link">
+      安装教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../bk/git/" title="Git使用" class="md-nav__link">
+      Git使用
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Ubuntu操作系统
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Ubuntu操作系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../virtual_install/" title="虚拟机安装" class="md-nav__link">
+      虚拟机安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../start/" title="Linux入门" class="md-nav__link">
+      Linux入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        常用Linux命令
+      </label>
+    
+    <a href="./" title="常用Linux命令" class="md-nav__link md-nav__link--active">
+      常用Linux命令
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    Linux常用操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ls" class="md-nav__link">
+    ls 文件及文件夹查看
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear" class="md-nav__link">
+    clear 清屏命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cd" class="md-nav__link">
+    cd 切换目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwd" class="md-nav__link">
+    pwd 显示当前路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdir" class="md-nav__link">
+    mkdir 创建目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#touch" class="md-nav__link">
+    touch 创建文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rm" class="md-nav__link">
+    rm 删除文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp" class="md-nav__link">
+    cp 拷贝文件及目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mv" class="md-nav__link">
+    mv 移动、重命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    echo 控制台输出
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    &gt; 输出重定向
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cat" class="md-nav__link">
+    cat 查看&amp;合并文件内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tar" class="md-nav__link">
+    tar 归档管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zipunzip" class="md-nav__link">
+    zip、unzip 文件压缩解压
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scp" class="md-nav__link">
+    scp 远程拷贝文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wget" class="md-nav__link">
+    wget 文件下载
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tree" class="md-nav__link">
+    tree 目录树状结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which" class="md-nav__link">
+    which 查看命令位置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebootshutdown" class="md-nav__link">
+    reboot、shutdown 关机重启
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    网络相关命令
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ping" class="md-nav__link">
+    ping 测试网络是否联通
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ifconfig-ip" class="md-nav__link">
+    ifconfig 查看ip地址
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    ssh 连接远程电脑
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    用户及权限操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chmod" class="md-nav__link">
+    chmod 修改文件权限
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rwx" class="md-nav__link">
+    字母法权限修改：rwx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#421" class="md-nav__link">
+    数字法权限修改：421
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passwd" class="md-nav__link">
+    passwd 修改用户密码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whoami" class="md-nav__link">
+    whoami 我是谁
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit" class="md-nav__link">
+    exit 退出登录账户
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#su" class="md-nav__link">
+    su 切换到普通用户
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo-su" class="md-nav__link">
+    sudo su 切换到管理员账号
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    系统信息命令
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    查看系统版本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    查看硬件信息
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    运行时信息
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    其他命令手册参考
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../raspberry/" title="树莓派系统安装及连接" class="md-nav__link">
+      树莓派系统安装及连接
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Python基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Python基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/" title="Python介绍" class="md-nav__link">
+      Python介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/out_operations/" title="输出和运算符" class="md-nav__link">
+      输出和运算符
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      变量和数据类型
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        变量和数据类型
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/variables_types/" title="变量和数据类型" class="md-nav__link">
+      变量和数据类型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/types/numeric/" title="数字类型" class="md-nav__link">
+      数字类型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/types/str/" title="字符串类型" class="md-nav__link">
+      字符串类型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/types/bool/" title="布尔类型" class="md-nav__link">
+      布尔类型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/list/" title="列表(List)" class="md-nav__link">
+      列表(List)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/tuple/" title="元组(Tuple)" class="md-nav__link">
+      元组(Tuple)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/slicing/" title="切片" class="md-nav__link">
+      切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/set/" title="集合(Set)" class="md-nav__link">
+      集合(Set)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/dict/" title="字典(Dict)" class="md-nav__link">
+      字典(Dict)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9">
+    
+    <label class="md-nav__link" for="nav-4-9">
+      流程控制
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        流程控制
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/ctrl/" title="流程控制" class="md-nav__link">
+      流程控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/ctrl/conditions/" title="条件控制" class="md-nav__link">
+      条件控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/ctrl/while/" title="while循环" class="md-nav__link">
+      while循环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/ctrl/for/" title="for循环" class="md-nav__link">
+      for循环
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/method/" title="函数" class="md-nav__link">
+      函数
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Python Qt图形化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Python Qt图形化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/" title="PyQt介绍" class="md-nav__link">
+      PyQt介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/env/" title="PyQt环境搭建" class="md-nav__link">
+      PyQt环境搭建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/class/" title="类" class="md-nav__link">
+      类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/pkg/" title="主函数,模块,包" class="md-nav__link">
+      主函数,模块,包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/module/" title="系统内置函数" class="md-nav__link">
+      系统内置函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/first/" title="第一个窗体" class="md-nav__link">
+      第一个窗体
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/text/" title="文本和图片" class="md-nav__link">
+      文本和图片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/edit/" title="输入框" class="md-nav__link">
+      输入框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/button/" title="按钮" class="md-nav__link">
+      按钮
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/signal_slot/" title="信号和槽" class="md-nav__link">
+      信号和槽
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/layout/" title="布局" class="md-nav__link">
+      布局
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/box/" title="单选和多选框" class="md-nav__link">
+      单选和多选框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/dialog/" title="对话框" class="md-nav__link">
+      对话框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/object/" title="面向对象的窗体" class="md-nav__link">
+      面向对象的窗体
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Python串口通信
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Python串口通信
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/" title="串口通信介绍" class="md-nav__link">
+      串口通信介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/code/" title="代码控制" class="md-nav__link">
+      代码控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/gui/" title="GUI控制" class="md-nav__link">
+      GUI控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/protocol/" title="协议" class="md-nav__link">
+      协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/read/" title="串口接收" class="md-nav__link">
+      串口接收
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/thread/" title="多线程" class="md-nav__link">
+      多线程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      ROS机器人操作系统
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        ROS机器人操作系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
+    
+    <label class="md-nav__link" for="nav-7-1">
+      机器人概述
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-1">
+        机器人概述
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/outline/category/" title="机器人分类" class="md-nav__link">
+      机器人分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/outline/area/" title="机器人应用领域" class="md-nav__link">
+      机器人应用领域
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/outline/program/" title="机器人编程介绍" class="md-nav__link">
+      机器人编程介绍
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      ROS介绍
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        ROS介绍
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/intro/" title="ROS是什么" class="md-nav__link">
+      ROS是什么
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/intro/version/" title="版本介绍" class="md-nav__link">
+      版本介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/intro/prod/" title="产品介绍" class="md-nav__link">
+      产品介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/intro/trend/" title="发展趋势" class="md-nav__link">
+      发展趋势
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      ROS开发环境
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        ROS开发环境
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/env/" title="环境要求" class="md-nav__link">
+      环境要求
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/env/ubuntu18/" title="Ubuntu1804配置" class="md-nav__link">
+      Ubuntu1804配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/env/ros18/" title="ROS Melodic安装" class="md-nav__link">
+      ROS Melodic安装
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
+    
+    <label class="md-nav__link" for="nav-7-4">
+      ROS架构设计
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-4">
+        ROS架构设计
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/arch/" title="架构介绍" class="md-nav__link">
+      架构介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/arch/file/" title="文件系统" class="md-nav__link">
+      文件系统
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
+    
+    <label class="md-nav__link" for="nav-7-5">
+      ROS起步
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-5">
+        ROS起步
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/hello/ws/" title="Workspace创建" class="md-nav__link">
+      Workspace创建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/hello/pkg/" title="Package创建" class="md-nav__link">
+      Package创建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/hello/pkgpy/" title="第一个节点" class="md-nav__link">
+      第一个节点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/hello/rosapi/" title="常规API" class="md-nav__link">
+      常规API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/hello/nodesh/" title="Node命令行工具" class="md-nav__link">
+      Node命令行工具
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-6" type="checkbox" id="nav-7-6">
+    
+    <label class="md-nav__link" for="nav-7-6">
+      Topic通讯
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-6">
+        Topic通讯
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/outline/" title="Topic理解" class="md-nav__link">
+      Topic理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/pypublisher/" title="Publisher实现" class="md-nav__link">
+      Publisher实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/pysubscriber/" title="Subscriber实现" class="md-nav__link">
+      Subscriber实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/bash/" title="Topic命令行工具" class="md-nav__link">
+      Topic命令行工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/turtle/" title="小乌龟介绍" class="md-nav__link">
+      小乌龟介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/qtcontrol/" title="小乌龟案例需求" class="md-nav__link">
+      小乌龟案例需求
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/pyimpl1/" title="小乌龟案例实现" class="md-nav__link">
+      小乌龟案例实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/qtcontrol2/" title="小乌龟案例需求二" class="md-nav__link">
+      小乌龟案例需求二
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/pyimpl2/" title="小乌龟案例实现二" class="md-nav__link">
+      小乌龟案例实现二
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/summary/" title="Topic通讯小结" class="md-nav__link">
+      Topic通讯小结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/simpledriver/" title="简单控制板驱动" class="md-nav__link">
+      简单控制板驱动
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Service通讯
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        Service通讯
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/base/" title="Service理解" class="md-nav__link">
+      Service理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/intro/" title="简单需求" class="md-nav__link">
+      简单需求
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/pyserver/" title="Server端实现" class="md-nav__link">
+      Server端实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/pyclient/" title="Client端实现" class="md-nav__link">
+      Client端实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/bash/" title="Service命令行工具" class="md-nav__link">
+      Service命令行工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/turtle/" title="小乌龟分析" class="md-nav__link">
+      小乌龟分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/turtleqt/" title="小乌龟案例需求" class="md-nav__link">
+      小乌龟案例需求
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/summary/" title="Service通讯小结" class="md-nav__link">
+      Service通讯小结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/simpledriver/" title="简单控制板驱动" class="md-nav__link">
+      简单控制板驱动
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-8" type="checkbox" id="nav-7-8">
+    
+    <label class="md-nav__link" for="nav-7-8">
+      ros消息
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-8">
+        ros消息
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/rosmsg/msg/" title="msg消息" class="md-nav__link">
+      msg消息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/rosmsg/srv/" title="srv消息" class="md-nav__link">
+      srv消息
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      ros日志
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        ros日志
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/log/level/" title="日志级别" class="md-nav__link">
+      日志级别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/log/api/" title="常用API" class="md-nav__link">
+      常用API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/log/rqt/" title="可视化日志" class="md-nav__link">
+      可视化日志
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-10" type="checkbox" id="nav-7-10">
+    
+    <label class="md-nav__link" for="nav-7-10">
+      无人车下位机驱动
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-10">
+        无人车下位机驱动
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/driver/" title="协议设计" class="md-nav__link">
+      协议设计
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/driver/protocol/" title="无人小车通讯协议" class="md-nav__link">
+      无人小车通讯协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/driver/code/" title="驱动实现" class="md-nav__link">
+      驱动实现
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-11" type="checkbox" id="nav-7-11">
+    
+    <label class="md-nav__link" for="nav-7-11">
+      Param和Launch
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-11">
+        Param和Launch
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/config/pbase/" title="param介绍" class="md-nav__link">
+      param介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/config/papi/" title="paramAPI访问" class="md-nav__link">
+      paramAPI访问
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/config/lbase/" title="launch文件" class="md-nav__link">
+      launch文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/config/lnode/" title="节点配置" class="md-nav__link">
+      节点配置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-12" type="checkbox" id="nav-7-12">
+    
+    <label class="md-nav__link" for="nav-7-12">
+      TF坐标转换
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-12">
+        TF坐标转换
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/intro/" title="TF基本概念" class="md-nav__link">
+      TF基本概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/base/" title="TF原理" class="md-nav__link">
+      TF原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/demo1/" title="跟随" class="md-nav__link">
+      跟随
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/ui/" title="rviz可视化" class="md-nav__link">
+      rviz可视化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/demo2/" title="护航" class="md-nav__link">
+      护航
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/demo3/" title="环绕" class="md-nav__link">
+      环绕
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-13" type="checkbox" id="nav-7-13">
+    
+    <label class="md-nav__link" for="nav-7-13">
+      URDF可视化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-13">
+        URDF可视化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/intro/" title="URDF介绍" class="md-nav__link">
+      URDF介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/first/" title="URDF可视化" class="md-nav__link">
+      URDF可视化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-13-3" type="checkbox" id="nav-7-13-3">
+    
+    <label class="md-nav__link" for="nav-7-13-3">
+      Link连杆
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-7-13-3">
+        Link连杆
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/link/" title="连杆介绍" class="md-nav__link">
+      连杆介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/link/geometry/" title="视觉形状配置" class="md-nav__link">
+      视觉形状配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/link/origin/" title="视觉位姿配置" class="md-nav__link">
+      视觉位姿配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/link/material/" title="视觉纹理配置" class="md-nav__link">
+      视觉纹理配置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-13-4" type="checkbox" id="nav-7-13-4">
+    
+    <label class="md-nav__link" for="nav-7-13-4">
+      Joint关节
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-7-13-4">
+        Joint关节
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/joint/" title="关节介绍" class="md-nav__link">
+      关节介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/joint/fixed/" title="Fixed关节" class="md-nav__link">
+      Fixed关节
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/joint/revolute/" title="Revolute关节" class="md-nav__link">
+      Revolute关节
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/joint/continuous/" title="Continuos关节" class="md-nav__link">
+      Continuos关节
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/joint/prismatic/" title="Prismatic关节" class="md-nav__link">
+      Prismatic关节
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/demo1/" title="简易小车案例" class="md-nav__link">
+      简易小车案例
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/xacro/" title="xacro语法" class="md-nav__link">
+      xacro语法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/demo2/" title="简易小车案例xacro" class="md-nav__link">
+      简易小车案例xacro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/car/" title="无人小车模型" class="md-nav__link">
+      无人小车模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/car2/" title="无人小车位姿调试" class="md-nav__link">
+      无人小车位姿调试
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      控制概述
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        控制概述
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../control/control_intro/" title="01-控制介绍" class="md-nav__link">
+      01-控制介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../control/pid/" title="02-PID控制器" class="md-nav__link">
+      02-PID控制器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../control/pid_control/" title="03-PID控制器总结" class="md-nav__link">
+      03-PID控制器总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../control/pid_twiddle/" title="04-Twiddle调校最优解" class="md-nav__link">
+      04-Twiddle调校最优解
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      坐标系变换
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        坐标系变换
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../coordinate/transform2d/" title="01-2D坐标变换" class="md-nav__link">
+      01-2D坐标变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../coordinate/transform3d/" title="02-3D坐标变换" class="md-nav__link">
+      02-3D坐标变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../coordinate/pose3d/" title="03-3D姿态的描述方式" class="md-nav__link">
+      03-3D姿态的描述方式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../coordinate/rotation_matrix/" title="04-旋转矩阵求解" class="md-nav__link">
+      04-旋转矩阵求解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../coordinate/pose_demo/" title="05-3D位姿变换案例" class="md-nav__link">
+      05-3D位姿变换案例
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Numpy&Matplotlib
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Numpy&Matplotlib
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/numpy/" title="01-Numpy入门" class="md-nav__link">
+      01-Numpy入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/numpy2/" title="02-Numpy进阶" class="md-nav__link">
+      02-Numpy进阶
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/numpy_advance/" title="03-Numpy高级" class="md-nav__link">
+      03-Numpy高级
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/matplotlib/" title="04-Matplotlib绘图" class="md-nav__link">
+      04-Matplotlib绘图
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      OpenCV机器视觉
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        OpenCV机器视觉
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-1" type="checkbox" id="nav-11-1">
+    
+    <label class="md-nav__link" for="nav-11-1">
+      01_OpenCV基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-1">
+        01_OpenCV基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/01_challenge/" title="面临的挑战" class="md-nav__link">
+      面临的挑战
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/02_install/" title="OpenCV安装" class="md-nav__link">
+      OpenCV安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/03_quickstart/" title="入门案例" class="md-nav__link">
+      入门案例
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/04_jihebianhuan/" title="图片的几何变换" class="md-nav__link">
+      图片的几何变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/05_texiao/" title="图像特效" class="md-nav__link">
+      图像特效
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/06_meihua/" title="图片美化" class="md-nav__link">
+      图片美化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/07_shipin/" title="视频处理" class="md-nav__link">
+      视频处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-2" type="checkbox" id="nav-11-2">
+    
+    <label class="md-nav__link" for="nav-11-2">
+      02_OpenCV高级
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-2">
+        02_OpenCV高级
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/02_opencv_advance1/" title="学习目标" class="md-nav__link">
+      学习目标
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/02_opencv_advance1/01_facedeteaction/" title="人脸识别" class="md-nav__link">
+      人脸识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/02_opencv_advance1/02_hsv/" title="HSV颜色模型" class="md-nav__link">
+      HSV颜色模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/02_opencv_advance1/03_inrange/" title="颜色过滤" class="md-nav__link">
+      颜色过滤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/02_opencv_advance1/04_binary/" title="图像的二值化" class="md-nav__link">
+      图像的二值化
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-3" type="checkbox" id="nav-11-3">
+    
+    <label class="md-nav__link" for="nav-11-3">
+      03_OpenCV进阶
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-3">
+        03_OpenCV进阶
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/" title="学习目标" class="md-nav__link">
+      学习目标
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/02_juanji/" title="图片卷积" class="md-nav__link">
+      图片卷积
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/03_hough/" title="霍夫变换" class="md-nav__link">
+      霍夫变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/04_contours/" title="边缘与轮廓" class="md-nav__link">
+      边缘与轮廓
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/04_xingtai/" title="形态学变换" class="md-nav__link">
+      形态学变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/04_match/" title="模板匹配" class="md-nav__link">
+      模板匹配
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/05_bs/" title="背景消除" class="md-nav__link">
+      背景消除
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      运动控制
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        运动控制
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/motion/" title="串口通讯" class="md-nav__link">
+      串口通讯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/ros_bridge/" title="移植到ROS" class="md-nav__link">
+      移植到ROS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/10_follow/" title="移动跟随" class="md-nav__link">
+      移动跟随
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      人工智能
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        人工智能
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/01_perceptron/" title="感知机" class="md-nav__link">
+      感知机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/02_deeplearning/" title="神经网络和深度学习" class="md-nav__link">
+      神经网络和深度学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/03_tensorflow/" title="tensorflow入门" class="md-nav__link">
+      tensorflow入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/04_image_rec/" title="多分类和图像识别" class="md-nav__link">
+      多分类和图像识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/05_cnn/" title="卷积神经网络" class="md-nav__link">
+      卷积神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/06_traffic_sign_classification/" title="交通标志识别" class="md-nav__link">
+      交通标志识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/07_auto_drive/" title="自动驾驶" class="md-nav__link">
+      自动驾驶
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      SLAM
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        SLAM
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/09_rqt_reconfigure/" title="动态配置参数" class="md-nav__link">
+      动态配置参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/06_rqt_plot/" title="PID调试" class="md-nav__link">
+      PID调试
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/11_followlinetwo/" title="小车巡线控制" class="md-nav__link">
+      小车巡线控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slam/00_slam_intro/" title="SLAM简介" class="md-nav__link">
+      SLAM简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slam/01_fangzhen/" title="SLAM仿真环境" class="md-nav__link">
+      SLAM仿真环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slam/02_astar/" title="A星寻路算法" class="md-nav__link">
+      A星寻路算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slam/03_realcar_slam/" title="真车SLAM" class="md-nav__link">
+      真车SLAM
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15">
+    
+    <label class="md-nav__link" for="nav-15">
+      cpp基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-15">
+        cpp基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cpp/day01/" title="cpp快速入门" class="md-nav__link">
+      cpp快速入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cpp/day02/" title="vector和函数" class="md-nav__link">
+      vector和函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../cpp/day03/" title="tensorflow入门" class="md-nav__link">
+      tensorflow入门
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-16" type="checkbox" id="nav-16">
+    
+    <label class="md-nav__link" for="nav-16">
+      ORB_SLAM2
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-16">
+        ORB_SLAM2
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/slam_intro/" title="SLAM框架概述" class="md-nav__link">
+      SLAM框架概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/orbslam/" title="ORB_SLAM2入门" class="md-nav__link">
+      ORB_SLAM2入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/orbslam_ros_1/" title="ORB_SLAM2入门-ROS_1" class="md-nav__link">
+      ORB_SLAM2入门-ROS_1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/orbslam_ros_2/" title="ORB_SLAM2入门-ROS_2" class="md-nav__link">
+      ORB_SLAM2入门-ROS_2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/astra_ros/" title="Astra相机的ROS环境" class="md-nav__link">
+      Astra相机的ROS环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/rosbag/" title="ROS的rogbag使用" class="md-nav__link">
+      ROS的rogbag使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/octomap/" title="OctoMap-基于八叉树的地图" class="md-nav__link">
+      OctoMap-基于八叉树的地图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/pointcloud_octomap/" title="OctoMap-实时点云及拓扑图" class="md-nav__link">
+      OctoMap-实时点云及拓扑图
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-17" type="checkbox" id="nav-17">
+    
+    <label class="md-nav__link" for="nav-17">
+      相机标定&内参
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-17">
+        相机标定&内参
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/camera/camera_calibration/" title="RGBD相机标定" class="md-nav__link">
+      RGBD相机标定
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/camera/01-pinhole_camera_model/" title="相机模型&坐标系" class="md-nav__link">
+      相机模型&坐标系
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/camera/02-coordinates/" title="坐标变换&内外参" class="md-nav__link">
+      坐标变换&内外参
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/camera/03-distortions/" title="相机透镜&畸变" class="md-nav__link">
+      相机透镜&畸变
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/camera/04-undistortion/" title="相机标定&去畸变" class="md-nav__link">
+      相机标定&去畸变
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
+    
+    <label class="md-nav__link" for="nav-18">
+      下位机开发
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-18">
+        下位机开发
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../stm32/STM32/" title="stm32控制和开发" class="md-nav__link">
+      stm32控制和开发
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
+    
+    <label class="md-nav__link" for="nav-19">
+      附录
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-19">
+        附录
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../addenda/rosmsg/" title="ROS消息类型对照表" class="md-nav__link">
+      ROS消息类型对照表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../addenda/env-python/" title="Python开发工具及环境" class="md-nav__link">
+      Python开发工具及环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../addenda/env-conda/" title="Anaconda环境的使用" class="md-nav__link">
+      Anaconda环境的使用
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    Linux常用操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ls" class="md-nav__link">
+    ls 文件及文件夹查看
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear" class="md-nav__link">
+    clear 清屏命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cd" class="md-nav__link">
+    cd 切换目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwd" class="md-nav__link">
+    pwd 显示当前路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdir" class="md-nav__link">
+    mkdir 创建目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#touch" class="md-nav__link">
+    touch 创建文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rm" class="md-nav__link">
+    rm 删除文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp" class="md-nav__link">
+    cp 拷贝文件及目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mv" class="md-nav__link">
+    mv 移动、重命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    echo 控制台输出
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    &gt; 输出重定向
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cat" class="md-nav__link">
+    cat 查看&amp;合并文件内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tar" class="md-nav__link">
+    tar 归档管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zipunzip" class="md-nav__link">
+    zip、unzip 文件压缩解压
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scp" class="md-nav__link">
+    scp 远程拷贝文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wget" class="md-nav__link">
+    wget 文件下载
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tree" class="md-nav__link">
+    tree 目录树状结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which" class="md-nav__link">
+    which 查看命令位置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebootshutdown" class="md-nav__link">
+    reboot、shutdown 关机重启
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    网络相关命令
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ping" class="md-nav__link">
+    ping 测试网络是否联通
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ifconfig-ip" class="md-nav__link">
+    ifconfig 查看ip地址
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    ssh 连接远程电脑
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    用户及权限操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chmod" class="md-nav__link">
+    chmod 修改文件权限
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rwx" class="md-nav__link">
+    字母法权限修改：rwx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#421" class="md-nav__link">
+    数字法权限修改：421
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passwd" class="md-nav__link">
+    passwd 修改用户密码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whoami" class="md-nav__link">
+    whoami 我是谁
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit" class="md-nav__link">
+    exit 退出登录账户
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#su" class="md-nav__link">
+    su 切换到普通用户
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo-su" class="md-nav__link">
+    sudo su 切换到管理员账号
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    系统信息命令
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    查看系统版本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    查看硬件信息
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    运行时信息
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    其他命令手册参考
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1 style="display: none">常用Linux命令</h1>
+                
+                <h2 id="linux">Linux常用操作<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h2>
+<ul>
+<li>ls</li>
+<li>clear</li>
+<li>cd</li>
+<li>pwd</li>
+<li>mkdir</li>
+<li>rm</li>
+<li>cp</li>
+<li>mv</li>
+<li>touch</li>
+</ul>
+<hr />
+<h3 id="ls">ls 文件及文件夹查看<a class="headerlink" href="#ls" title="Permanent link">&para;</a></h3>
+<p>ls是英文单词list的简写，其功能为列出目录的内容，是用户最常用的命令之一，它类似于DOS下的dir命令。Linux文件或者目录名称最长可以有265个字符，“.”代表当前目录，“..”代表上一级目录，以“.”开头的文件为隐藏文件，需要用 -a 参数才能显示。</p>
+<p><strong>常用示例：</strong></p>
+<p><code>ls -a</code> 查看当前所有文件和目录，包含隐藏文件和目录</p>
+<p><code>ls -l</code> 以列表形式查看所有文件和目录</p>
+<p><code>ll</code> 等同于<code>ls -al</code> 即等同于以上两个命令结合</p>
+<p><strong>ls常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">-a</td>
+<td>显示指定目录下所有子目录与文件，包括隐藏文件</td>
+</tr>
+<tr>
+<td align="center">-l</td>
+<td>以列表方式显示文件的详细信息</td>
+</tr>
+<tr>
+<td align="center">-h</td>
+<td>配合 -l 以人性化的方式显示文件大小，即文件大小可以用mb</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>poplar@PoplarTang:~/Lesson/Test$ ls -al
+total <span class="m">0</span>
+drwxrwxrwx <span class="m">1</span> poplar poplar <span class="m">512</span> May  <span class="m">9</span> <span class="m">10</span>:59 .
+drwxrwxrwx <span class="m">1</span> poplar poplar <span class="m">512</span> May  <span class="m">9</span> <span class="m">10</span>:59 ..
+drwxrwxrwx <span class="m">1</span> poplar poplar <span class="m">512</span> May  <span class="m">9</span> <span class="m">10</span>:59 TestDir
+drwxrwxrwx <span class="m">1</span> poplar poplar <span class="m">512</span> May  <span class="m">9</span> <span class="m">10</span>:59 a
+-rw-rw-rw- <span class="m">1</span> poplar poplar   <span class="m">0</span> May  <span class="m">9</span> <span class="m">10</span>:59 haha.txt
+</code></pre></div>
+<p><strong>输出信息含义：</strong></p>
+<p><img alt="img" src="../assets/60-command-ls.png" /></p>
+<p><strong>通配符：</strong></p>
+<p>与DOS下的文件操作类似，在Unix/Linux系统中，也同样允许使用特殊字符来同时引用多个文件名，这些特殊字符被称为通配符。只要和文件或文件夹描述相关的地方几乎都可以使用通配符。常用的通配符方式</p>
+<ul>
+<li><code>ls te*</code>  查看所有以te开头的文件及目录</li>
+<li><code>ls *.txt</code> 查看所有以<code>.txt</code>结尾的文件及目录</li>
+<li><code>ls te[sx]t</code> 将匹配test或text</li>
+</ul>
+<h3 id="clear">clear 清屏命令<a class="headerlink" href="#clear" title="Permanent link">&para;</a></h3>
+<p>有时候控制台内容太多，可以用clear命令清空一下控制台</p>
+<p>也可使用快捷键：<code>Ctrl + l</code> ( “l” 为字母L的小写 )。</p>
+<h3 id="cd">cd 切换目录<a class="headerlink" href="#cd" title="Permanent link">&para;</a></h3>
+<p>在使用Unix/Linux的时候，经常需要更换工作目录。cd命令可以帮助用户切换工作目录。<strong>Linux所有的目录和文件名大小写敏感</strong></p>
+<p>cd（change directory）后面可跟绝对路径，也可以跟相对路径。如果省略目录，则默认切换到当前用户的主目录。</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">cd</td>
+<td>切换到当前用户的主目录(/home/用户目录)，<br />用户登陆时，默认的目录就是用户的主目录。</td>
+</tr>
+<tr>
+<td align="left">cd ~</td>
+<td>切换到当前用户的主目录(/home/用户目录)</td>
+</tr>
+<tr>
+<td align="left">cd .</td>
+<td>切换到当前目录</td>
+</tr>
+<tr>
+<td align="left">cd ..</td>
+<td>切换到上级目录</td>
+</tr>
+<tr>
+<td align="left">cd -</td>
+<td>可进入上次所在的目录</td>
+</tr>
+<tr>
+<td align="left">cd /</td>
+<td>切换到系统根目录/</td>
+</tr>
+</tbody>
+</table>
+<p>如果路径是从根路径开始的，则路径的前面需要加上 “ / ”，如 “ /mnt ”，通常进入某个目录里的文件夹，前面不用加 “ / ”。</p>
+<h3 id="pwd">pwd 显示当前路径<a class="headerlink" href="#pwd" title="Permanent link">&para;</a></h3>
+<p>使用pwd命令可以显示当前的工作目录，该命令很简单，但又很常用，直接输入pwd即可，后面不带参数。</p>
+<div class="highlight"><pre><span></span><code>ty@ubuntu:~/Downloads$ <span class="nb">pwd</span>
+/home/ty/Downloads
+</code></pre></div>
+<h3 id="mkdir">mkdir 创建目录<a class="headerlink" href="#mkdir" title="Permanent link">&para;</a></h3>
+<p>通过mkdir命令可以创建一个新的目录。参数-p可递归创建目录。</p>
+<p>需要注意的是新建目录的名称不能与当前目录中已有的目录或文件同名，并且目录创建者必须对当前目录具有写权限。</p>
+<p><strong>常用示例：</strong></p>
+<ul>
+<li><code>mkdir TestDir</code></li>
+<li><code>mkdir -p a/b/c/d</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>poplar@PoplarTang:~/Lesson/Test$ mkdir TestDir
+poplar@PoplarTang:~/Lesson/Test$ mkdir -p a/b/c/d
+<span class="hll">poplar@PoplarTang:~/Lesson/Test$ tree
+</span>.
+├── TestDir
+├── a
+│   └── b
+│       └── c
+│           └── d
+└── haha.txt
+
+<span class="m">5</span> directories, <span class="m">1</span> file
+</code></pre></div>
+<h3 id="touch">touch 创建文件<a class="headerlink" href="#touch" title="Permanent link">&para;</a></h3>
+<p>用户可以通过touch来创建一个空的文件：</p>
+<div class="highlight"><pre><span></span><code>touch hello.txt
+</code></pre></div>
+<p>说明：</p>
+<ul>
+<li>会在当前路径下创建名字为hello.txt的空文件</li>
+<li>Linux系统中没有严格的后缀（格式），所以创建文件时可以命名为任意的文件名</li>
+</ul>
+<h3 id="rm">rm 删除文件<a class="headerlink" href="#rm" title="Permanent link">&para;</a></h3>
+<p>可通过rm删除文件或目录。使用rm命令要小心，因为文件删除后不能恢复。为了防止文件误删，可以在rm后使用-i参数以逐个确认要删除的文件。</p>
+<p>常用参数及含义如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">-f</td>
+<td>强制删除，忽略不存在的文件，无需提示</td>
+</tr>
+<tr>
+<td align="center">-r</td>
+<td>递归地删除目录下的内容，删除文件夹时必须加此参数<br />也可使用<code>rmdir</code>删除一个空目录</td>
+</tr>
+</tbody>
+</table>
+<p><strong>常用示例：</strong></p>
+<p><code>rm xxx.txt aaa.txt</code> 删除文件：（可一次删除多个）</p>
+<p><code>rm -r test_dir</code>删除目录</p>
+<p><code>rmdir test_dir</code> 使用rmdir也可以删除目录, 但必须保证被删除目录里为空</p>
+<h3 id="cp">cp 拷贝文件及目录<a class="headerlink" href="#cp" title="Permanent link">&para;</a></h3>
+<p>cp（copy）命令的功能是将给出的文件或目录复制到另一个文件或目录中，相当于DOS下的copy命令。</p>
+<p>常用选项说明：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>该选项通常在复制目录时使用，它保留链接、文件属性，并递归地复制目录 简单而言，保持文件原有属性。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>若给出的源文件是目录文件，则cp将递归复制该目录下的所有子目录和文件 目标文件必须为一个目录名。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>常用示例：</strong></p>
+<p><code>cp file.txt abc/</code>将当前目录的file.txt拷贝到abc目录</p>
+<p><code>cp abc/*.txt .</code> 将abc目录下的所有txt文件拷贝到当前目录</p>
+<p><code>cp -r abc aaa</code> 将abc目录拷贝为aaa目录（包含所有子目录及文件）</p>
+<h3 id="mv">mv 移动、重命名<a class="headerlink" href="#mv" title="Permanent link">&para;</a></h3>
+<p>用户可以使用mv命令来移动文件或目录，也可以给文件或目录重命名。</p>
+<p>常用选项说明：</p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-f</td>
+<td>禁止交互式操作，如有覆盖也不会给出提示</td>
+</tr>
+<tr>
+<td align="left">-i</td>
+<td>确认交互方式操作，如果mv操作将导致对已存在的目标文件的覆盖<br />系统会询问是否重写，要求用户回答以避免误覆盖文件</td>
+</tr>
+<tr>
+<td align="left">-v</td>
+<td>显示移动进度</td>
+</tr>
+</tbody>
+</table>
+<p><strong>常用示例：</strong></p>
+<p><code>mv a.md abc.txt</code> 将a.md重命名为abc.txt</p>
+<p><code>mv abc.txt ./aaa</code> 将abc.txt移动到当前的aaa目录中</p>
+<h3 id="echo">echo 控制台输出<a class="headerlink" href="#echo" title="Permanent link">&para;</a></h3>
+<p><code>echo "HelloWorld"</code></p>
+<p>向控制台输出HelloWorld信息</p>
+<h3 id="_1">&gt; 输出重定向<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>Linux允许将命令执行结果重定向到一个文件，本应显示在终端上的内容保存到指定文件中。</p>
+<p><code>ls &gt; test.txt</code></p>
+<p>test.txt 如果不存在，则创建，存在则覆盖其内容 </p>
+<p>注意：<code>&gt;</code>输出重定向会覆盖原来的内容，<code>&gt;&gt;</code>输出重定向则会追加到文件的尾部</p>
+<h3 id="cat">cat 查看&amp;合并文件内容<a class="headerlink" href="#cat" title="Permanent link">&para;</a></h3>
+<p><code>cat xxx.py</code> 可以用来快速查看某个文件内容，输出到控制台</p>
+<p><code>cat test.txt &gt;&gt; haha.txt</code> 将test.txt的内容追加到haha.txt中</p>
+<p><code>cat 1.txt 2.txt &gt; 1_2.txt</code>将1.txt 2.txt内容合并到1_2.txt中</p>
+<h3 id="tar">tar 归档管理<a class="headerlink" href="#tar" title="Permanent link">&para;</a></h3>
+<p>计算机中的数据经常需要备份，tar是Unix/Linux中最常用的备份工具，此命令可以把一系列文件归档到一个大文件中，也可以把档案文件解开以恢复数据。</p>
+<p><strong>tar使用格式：</strong></p>
+<p><code>tar [参数] 打包文件名 文件</code></p>
+<p>tar命令很特殊，其参数前面可以使用“-”，也可以不使用。</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-c</td>
+<td>生成档案文件，创建打包文件</td>
+</tr>
+<tr>
+<td align="left">-x</td>
+<td>解开档案文件</td>
+</tr>
+<tr>
+<td align="left">-z</td>
+<td>压缩/解压, 此选项只针对tar.gz为结尾的文件</td>
+</tr>
+<tr>
+<td align="left">-v</td>
+<td>列出归档解档的详细过程，显示进度</td>
+</tr>
+<tr>
+<td align="left">-t</td>
+<td>列出档案中包含的文件</td>
+</tr>
+<tr>
+<td align="left">-f</td>
+<td>指定档案文件名称，f后面一定是.tar文件，所以必须放选项最后</td>
+</tr>
+</tbody>
+</table>
+<p>注意：除了f需要放在参数的最后，其它参数的顺序任意。</p>
+<p><strong>常用命令：</strong></p>
+<ul>
+<li>打包并压缩</li>
+</ul>
+<blockquote>
+<p>当前目录所有文件<code>tar -czvf xxx.tar.gz *</code></p>
+<p>以.txt结尾的文件<code>tar -czvf xxx.tar.gz *.txt</code></p>
+<p>打包指定目录或文件<code>tar -czvf xxx.tar.gz my-file my-dir</code></p>
+</blockquote>
+<ul>
+<li>解压缩包</li>
+</ul>
+<blockquote>
+<p>解包到当前目录：<code>tar -xzvf xxx.tar.gz</code></p>
+<p>解包到指定目录：<code>tar -xzvf xxx.tar.gz -C my-dir</code> （需要先创建my-dir目录）</p>
+</blockquote>
+<h3 id="zipunzip">zip、unzip 文件压缩解压<a class="headerlink" href="#zipunzip" title="Permanent link">&para;</a></h3>
+<p>通过zip压缩文件的目标文件不需要指定扩展名，默认扩展名为zip。</p>
+<p><strong>压缩文件</strong>：zip [-r] 目标文件(没有扩展名) 源文件</p>
+<blockquote>
+<p>文件：<code>zip bak *</code> 当前目录所有文件，也可以指定文件</p>
+<p>文件夹：<code>zip -r bak *</code> 当前目录所有文件&amp;目录递归</p>
+</blockquote>
+<p><strong>解压文件</strong>：unzip -d 解压后目录文件 压缩文件</p>
+<blockquote>
+<p>解压到指定目录：<code>unzip -d ./target_dir  bak.zip</code></p>
+<p>解压到当前目录：<code>unzip bak.zip</code></p>
+</blockquote>
+<h3 id="scp">scp 远程拷贝文件<a class="headerlink" href="#scp" title="Permanent link">&para;</a></h3>
+<ul>
+<li>从远程复制<strong>文件</strong>到本地</li>
+</ul>
+<div class="highlight"><pre><span></span><code>scp root@192.168.16.66:/home/poplar/xxx.tar.gz /home/test/
+</code></pre></div>
+<ul>
+<li>从本地复制<strong>文件</strong>到远程</li>
+</ul>
+<div class="highlight"><pre><span></span><code>scp /home/test/xxx.png root@192.168.16.66:/home/poplar/
+</code></pre></div>
+<ul>
+<li>从远程复制<strong>目录</strong>到本地 -r</li>
+</ul>
+<div class="highlight"><pre><span></span><code>scp -r root@192.168.16.66:/home/poplar/day01 /home/test/
+</code></pre></div>
+<ul>
+<li>从本地复制<strong>目录</strong>到远程 -r</li>
+</ul>
+<div class="highlight"><pre><span></span><code>scp -r /home/test/day01 root@192.168.16.66:/home/poplar/
+</code></pre></div>
+<h3 id="wget">wget 文件下载<a class="headerlink" href="#wget" title="Permanent link">&para;</a></h3>
+<ul>
+<li>下载普通文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code>wget http://p1.qhimgs4.com/t01ce0387e64e3428ca.jpg
+</code></pre></div>
+<ul>
+<li>以指定文件名保存文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code>wget -O girl.jpg http://p1.qhimgs4.com/t01ce0387e64e3428ca.jpg
+</code></pre></div>
+<ul>
+<li>断点续传</li>
+</ul>
+<div class="highlight"><pre><span></span><code>wget -c http://p1.qhimgs4.com/t01ce0387e64e3428ca.jpg
+</code></pre></div>
+<h3 id="tree">tree 目录树状结构<a class="headerlink" href="#tree" title="Permanent link">&para;</a></h3>
+<p>使用tree命令可以查看指定目录的树状结构</p>
+<div class="highlight"><pre><span></span><code>poplar@PoplarTang:~/Lesson/day01$ tree
+.
+├── Test.sh
+├── TestDir
+│   └── test.sh
+├── a
+│   └── b
+│       └── c
+│           └── d
+│               └── haha.txt
+├── haha.txt
+├── hhh.sh
+├── pics
+│   ├── 20190213185356_sczsq.jpg
+│   ├── 20190216212132_uvtxf.thumb.700_0.gif
+│   └── url-list.txt
+├── test.txt
+└── ttt.txt
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>有的系统默认未安装tree，需要先使用<code>sudo apt install tree</code>安装后才可以使用tree命令</p>
+</div>
+<h3 id="which">which 查看命令位置<a class="headerlink" href="#which" title="Permanent link">&para;</a></h3>
+<p>有时我们想知道被执行的命令在哪个目录，以方便切换或更新不同版本，如Python。可以使用<code>which 命令</code></p>
+<div class="highlight"><pre><span></span><code>poplar@PoplarTang:~/Lesson$ which python
+/usr/bin/python
+poplar@PoplarTang:~/Lesson$ which ls
+/bin/ls
+</code></pre></div>
+<h3 id="rebootshutdown">reboot、shutdown 关机重启<a class="headerlink" href="#rebootshutdown" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">reboot</td>
+<td>重新启动操作系统</td>
+</tr>
+<tr>
+<td align="left">shutdown –r now</td>
+<td>重新启动操作系统，shutdown会给别的用户提示</td>
+</tr>
+<tr>
+<td align="left">shutdown -h now</td>
+<td>立刻关机，其中now相当于时间为0的状态</td>
+</tr>
+<tr>
+<td align="left">shutdown -h 20:25</td>
+<td>系统在今天的20:25 会关机</td>
+</tr>
+<tr>
+<td align="left">shutdown -h +10</td>
+<td>系统再过十分钟后自动关机</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">网络相关命令<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="ping">ping 测试网络是否联通<a class="headerlink" href="#ping" title="Permanent link">&para;</a></h3>
+<p>可以执行<code>ping baidu.com</code>以查看是否连接了互联网</p>
+<p>可以执行<code>ping 192.168.1.123</code>以查看局域网中的其他设备是否联通</p>
+<p><img alt="image-20200817162700564" src="../assets/image-20200817162700564.png" /></p>
+<h3 id="ifconfig-ip">ifconfig 查看ip地址<a class="headerlink" href="#ifconfig-ip" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20200817162732906" src="../assets/image-20200817162732906.png" /></p>
+<h3 id="ssh">ssh 连接远程电脑<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>ssh root@192.168.37.123
+</code></pre></div>
+<p>提示是否接受签名证书：输入yes，回车即可.</p>
+<p>如果远程电脑是新装电脑，有可能会因为ssh服务证书问题而无法连接，可以通过在远程电脑上重装ssh服务解决。</p>
+<p><strong>1. 重装ssh服务，生成证书</strong></p>
+<div class="highlight"><pre><span></span><code>sudo apt-get remove openssh-server
+sudo apt-get install openssh-server
+</code></pre></div>
+<p><strong>2. 重启ssh服务</strong></p>
+<div class="highlight"><pre><span></span><code>sudo service ssh restart
+</code></pre></div>
+<p><strong>3. 检查sshd服务是否存活</strong></p>
+<div class="highlight"><pre><span></span><code>sudo service ssh status
+</code></pre></div>
+<h2 id="_3">用户及权限操作<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="chmod">chmod 修改文件权限<a class="headerlink" href="#chmod" title="Permanent link">&para;</a></h3>
+<p>使用<code>ls -l</code>可以查看文件&amp;目录的权限</p>
+<p>使用<code>chmod</code>可以修改文件权限</p>
+<p>有两种使用格式：字母法与数字法。</p>
+<h4 id="rwx">字母法权限修改：rwx<a class="headerlink" href="#rwx" title="Permanent link">&para;</a></h4>
+<p><code>chmod u/g/o/a +/-/= rwx</code> 文件</p>
+<table>
+<thead>
+<tr>
+<th align="left">[ u/g/o/a ]</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">u</td>
+<td>user 表示该文件的所有者</td>
+</tr>
+<tr>
+<td align="left">g</td>
+<td>group 表示与该文件的所有者属于同一组( group )者，即用户组</td>
+</tr>
+<tr>
+<td align="left">o</td>
+<td>other 表示其他以外的人</td>
+</tr>
+<tr>
+<td align="left">a</td>
+<td>all 表示这三者皆是</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>[ &plusmn;/= ]</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>增加权限</td>
+</tr>
+<tr>
+<td>-</td>
+<td>撤销权限</td>
+</tr>
+<tr>
+<td>=</td>
+<td>设定权限</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>rwx</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>read 表示可读取，对于一个目录，如果没有r权限，那么就意味着不能通过ls查看这个目录的内容。</td>
+</tr>
+<tr>
+<td>w</td>
+<td>write 表示可写入，对于一个目录，如果没有w权限，那么就意味着不能在目录下创建新的文件。</td>
+</tr>
+<tr>
+<td>x</td>
+<td>excute 表示可执行，对于一个目录，如果没有x权限，那么就意味着不能通过cd进入这个目录。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>常用的操作如下</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 修改一个文件所属用户的权限为可读可写</span>
+chmod <span class="nv">u</span><span class="o">=</span>rw <span class="m">1</span>.py
+<span class="c1"># 为文件添加所有人可执行权限</span>
+chmod a+x <span class="m">1</span>.py
+</code></pre></div>
+<p>如果需要同时进行设定拥有者、同组者以及其他人的权限，参考如下：</p>
+<p><img alt="image-20200817111857776" src="../assets/image-20200817111857776.png" /></p>
+<h4 id="421">数字法权限修改：421<a class="headerlink" href="#421" title="Permanent link">&para;</a></h4>
+<p>“rwx” 这些权限也可以用数字来代替</p>
+<table>
+<thead>
+<tr>
+<th>字母</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>读取权限，数字代号为 "4"</td>
+</tr>
+<tr>
+<td>w</td>
+<td>写入权限，数字代号为 "2"</td>
+</tr>
+<tr>
+<td>x</td>
+<td>执行权限，数字代号为 "1"</td>
+</tr>
+<tr>
+<td>-</td>
+<td>不具任何权限，数字代号为 "0"</td>
+</tr>
+</tbody>
+</table>
+<p>如执行：<code>chmod u=rwx,g=rx,o=r filename</code> 就等同于：<code>chmod u=7,g=5,o=4 filename</code></p>
+<p><code>chmod 751 file</code>：</p>
+<ul>
+<li>文件所有者：读、写、执行权限</li>
+<li>同组用户：读、执行的权限</li>
+<li>其它用户：执行的权限</li>
+</ul>
+<p><img alt="image-20200817112117747" src="../assets/image-20200817112117747.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">注意：</p>
+<p>如果想递归所有目录加上相同权限，需要加上参数“ -R ”。<br/>如：<code>chmod 777 test/ -R</code> 递归 test 目录下所有文件加 777 权限</p>
+</div>
+<h3 id="passwd">passwd 修改用户密码<a class="headerlink" href="#passwd" title="Permanent link">&para;</a></h3>
+<p>在Unix/Linux中，超级用户可以使用passwd命令为普通用户设置或修改用户密码。用户也可以直接使用该命令来修改自己的密码，而无需在命令后面使用用户名。</p>
+<ul>
+<li>非超级用户只能修改自己的密码</li>
+</ul>
+<div class="highlight"><pre><span></span><code>poplar@PoplarTang:~$ passwd 
+Old password:****** 
+New password:******* 
+Re-enter new password:*******
+</code></pre></div>
+<ul>
+<li>超级管理员用户root，可以修改其他用户密码</li>
+</ul>
+<div class="highlight"><pre><span></span><code>root@PoplarTang:/home/poplar# passwd poplar
+New password:******* 
+Re-enter new password:*******
+</code></pre></div>
+<p>为了系统安全起见，要使用比较复杂的口令，最好使用8位以上的口令，并且口令中包含有大写、小写字母和数字</p>
+<h3 id="whoami">whoami 我是谁<a class="headerlink" href="#whoami" title="Permanent link">&para;</a></h3>
+<p><code>whoami</code>可以获取当前登录账户的用户名</p>
+<h3 id="exit">exit 退出登录账户<a class="headerlink" href="#exit" title="Permanent link">&para;</a></h3>
+<ul>
+<li>如果是图形界面，退出当前终端；</li>
+<li>如果是使用ssh远程登录，退出登陆账户；</li>
+<li>如果是切换后的登陆用户，退出则返回上一个登陆账号。</li>
+</ul>
+<h3 id="su">su 切换到普通用户<a class="headerlink" href="#su" title="Permanent link">&para;</a></h3>
+<p><code>su username</code> 切换到username用户，当前路径不变</p>
+<p><code>su - username</code>切换到username用户，当前路径变更为<code>/home/username</code></p>
+<h3 id="sudo-su">sudo su 切换到管理员账号<a class="headerlink" href="#sudo-su" title="Permanent link">&para;</a></h3>
+<p><code>sudo su</code> 或<code>sudo -s</code> Linux 下切换到root的命令</p>
+<h2 id="_4">系统信息命令<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">查看系统版本<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>发行版本号</li>
+</ul>
+<p><code>lsb_release -a</code></p>
+<ul>
+<li>内核版本及系统位数</li>
+</ul>
+<p><code>uname -a</code></p>
+<ul>
+<li>内核版本及gcc版本</li>
+</ul>
+<p><code>cat /proc/version</code></p>
+<h3 id="_6">查看硬件信息<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>cpu信息</li>
+</ul>
+<p><code>cat /proc/cpuinfo</code> or <code>lscpu</code></p>
+<ul>
+<li>内存信息</li>
+</ul>
+<p><code>sudo dmidecode -t memory</code></p>
+<h3 id="_7">运行时信息<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>top</code>实时CPU&amp;内存使用情况</li>
+<li><code>free</code>当前内存占用情况</li>
+<li><code>ps -aux</code>查看当前进程状态（CPU、内存占用、开启时间）</li>
+<li><code>kill</code>根据进程pid杀死指定进程，可以配合参数<code>-9</code>强制杀死</li>
+</ul>
+<h2 id="_8">其他命令手册参考<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>Linux命令大全：<a href="http://man.linuxde.net/">http://man.linuxde.net/</a></p>
+<p>菜鸟Linux命令：<a href="https://www.runoob.com/linux/linux-command-manual.html">https://www.runoob.com/linux/linux-command-manual.html</a></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../start/" title="Linux入门" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                Linux入门
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../raspberry/" title="树莓派系统安装及连接" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                树莓派系统安装及连接
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            <a href="https://www.czxy.com/">传智专修学院</a> 版权所有 2006 - 2020 江苏传智播客教育科技股份有限公司  学校地址：江苏省宿迁市沭阳县北京南路6号  邮编：223600   <a href="http://www.beian.miit.gov.cn/">苏ICP备16007882号-4</a>
+          </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdn.bootcdn.net/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../js/baidu-tongji.js"></script>
+      
+        <script src="../../js/baidu-tuisong.js"></script>
+      
+    
+  </body>
+</html>

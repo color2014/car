@@ -1,0 +1,4932 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="无人驾驶 slam 机器视觉 点云 传智专修学院 人工智能和机器人实验室 Linux命令、Ubuntu系统、Shell脚本、ROS、ROS架构设计">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>cpp快速入门 - 智学无人小车平台</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <!-- <a href="../.." title="智学无人小车平台" aria-label="智学无人小车平台" class="md-header-nav__button md-logo"> -->
+        <a href="/" title="智学无人小车平台" aria-label="智学无人小车平台" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              <a href="../..">智学无人小车平台</a>
+            </span>
+            <span class="md-header-nav__topic">
+              
+                cpp快速入门
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer" style="display: none;">
+    <a href="../.." title="智学无人小车平台" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    智学无人小车平台
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      开营仪式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        开营仪式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/" title="开营介绍" class="md-nav__link">
+      开营介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/comm/" title="沟通方式" class="md-nav__link">
+      沟通方式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/lesson/" title="授课模式" class="md-nav__link">
+      授课模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/content/" title="课程内容" class="md-nav__link">
+      课程内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/learn/" title="学习方法" class="md-nav__link">
+      学习方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/qa/" title="沟通与答疑" class="md-nav__link">
+      沟通与答疑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../camp/follow/" title="后续" class="md-nav__link">
+      后续
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      基础背景知识
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        基础背景知识
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../bk/hardware/" title="硬件知识" class="md-nav__link">
+      硬件知识
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../bk/structure/" title="机械结构" class="md-nav__link">
+      机械结构
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../bk/communication/" title="通讯原理" class="md-nav__link">
+      通讯原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../bk/power/" title="电源供应" class="md-nav__link">
+      电源供应
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../assemble/assemble/" title="安装教程" class="md-nav__link">
+      安装教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../bk/git/" title="Git使用" class="md-nav__link">
+      Git使用
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Ubuntu操作系统
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Ubuntu操作系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/virtual_install/" title="虚拟机安装" class="md-nav__link">
+      虚拟机安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/start/" title="Linux入门" class="md-nav__link">
+      Linux入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/shell/" title="常用Linux命令" class="md-nav__link">
+      常用Linux命令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/raspberry/" title="树莓派系统安装及连接" class="md-nav__link">
+      树莓派系统安装及连接
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Python基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Python基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/" title="Python介绍" class="md-nav__link">
+      Python介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/out_operations/" title="输出和运算符" class="md-nav__link">
+      输出和运算符
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      变量和数据类型
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        变量和数据类型
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/variables_types/" title="变量和数据类型" class="md-nav__link">
+      变量和数据类型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/types/numeric/" title="数字类型" class="md-nav__link">
+      数字类型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/types/str/" title="字符串类型" class="md-nav__link">
+      字符串类型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/types/bool/" title="布尔类型" class="md-nav__link">
+      布尔类型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/list/" title="列表(List)" class="md-nav__link">
+      列表(List)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/tuple/" title="元组(Tuple)" class="md-nav__link">
+      元组(Tuple)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/slicing/" title="切片" class="md-nav__link">
+      切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/set/" title="集合(Set)" class="md-nav__link">
+      集合(Set)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/dict/" title="字典(Dict)" class="md-nav__link">
+      字典(Dict)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9">
+    
+    <label class="md-nav__link" for="nav-4-9">
+      流程控制
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-9">
+        流程控制
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/ctrl/" title="流程控制" class="md-nav__link">
+      流程控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/ctrl/conditions/" title="条件控制" class="md-nav__link">
+      条件控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/ctrl/while/" title="while循环" class="md-nav__link">
+      while循环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/ctrl/for/" title="for循环" class="md-nav__link">
+      for循环
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../py/method/" title="函数" class="md-nav__link">
+      函数
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Python Qt图形化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Python Qt图形化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/" title="PyQt介绍" class="md-nav__link">
+      PyQt介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/env/" title="PyQt环境搭建" class="md-nav__link">
+      PyQt环境搭建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/class/" title="类" class="md-nav__link">
+      类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/pkg/" title="主函数,模块,包" class="md-nav__link">
+      主函数,模块,包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/module/" title="系统内置函数" class="md-nav__link">
+      系统内置函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/first/" title="第一个窗体" class="md-nav__link">
+      第一个窗体
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/text/" title="文本和图片" class="md-nav__link">
+      文本和图片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/edit/" title="输入框" class="md-nav__link">
+      输入框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/button/" title="按钮" class="md-nav__link">
+      按钮
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/signal_slot/" title="信号和槽" class="md-nav__link">
+      信号和槽
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/layout/" title="布局" class="md-nav__link">
+      布局
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/box/" title="单选和多选框" class="md-nav__link">
+      单选和多选框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/dialog/" title="对话框" class="md-nav__link">
+      对话框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../pyqt/object/" title="面向对象的窗体" class="md-nav__link">
+      面向对象的窗体
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Python串口通信
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Python串口通信
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/" title="串口通信介绍" class="md-nav__link">
+      串口通信介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/code/" title="代码控制" class="md-nav__link">
+      代码控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/gui/" title="GUI控制" class="md-nav__link">
+      GUI控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/protocol/" title="协议" class="md-nav__link">
+      协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/read/" title="串口接收" class="md-nav__link">
+      串口接收
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../serial/thread/" title="多线程" class="md-nav__link">
+      多线程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      ROS机器人操作系统
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        ROS机器人操作系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
+    
+    <label class="md-nav__link" for="nav-7-1">
+      机器人概述
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-1">
+        机器人概述
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/outline/category/" title="机器人分类" class="md-nav__link">
+      机器人分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/outline/area/" title="机器人应用领域" class="md-nav__link">
+      机器人应用领域
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/outline/program/" title="机器人编程介绍" class="md-nav__link">
+      机器人编程介绍
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      ROS介绍
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        ROS介绍
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/intro/" title="ROS是什么" class="md-nav__link">
+      ROS是什么
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/intro/version/" title="版本介绍" class="md-nav__link">
+      版本介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/intro/prod/" title="产品介绍" class="md-nav__link">
+      产品介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/intro/trend/" title="发展趋势" class="md-nav__link">
+      发展趋势
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      ROS开发环境
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        ROS开发环境
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/env/" title="环境要求" class="md-nav__link">
+      环境要求
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/env/ubuntu18/" title="Ubuntu1804配置" class="md-nav__link">
+      Ubuntu1804配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/env/ros18/" title="ROS Melodic安装" class="md-nav__link">
+      ROS Melodic安装
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
+    
+    <label class="md-nav__link" for="nav-7-4">
+      ROS架构设计
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-4">
+        ROS架构设计
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/arch/" title="架构介绍" class="md-nav__link">
+      架构介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/arch/file/" title="文件系统" class="md-nav__link">
+      文件系统
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
+    
+    <label class="md-nav__link" for="nav-7-5">
+      ROS起步
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-5">
+        ROS起步
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/hello/ws/" title="Workspace创建" class="md-nav__link">
+      Workspace创建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/hello/pkg/" title="Package创建" class="md-nav__link">
+      Package创建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/hello/pkgpy/" title="第一个节点" class="md-nav__link">
+      第一个节点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/hello/rosapi/" title="常规API" class="md-nav__link">
+      常规API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/hello/nodesh/" title="Node命令行工具" class="md-nav__link">
+      Node命令行工具
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-6" type="checkbox" id="nav-7-6">
+    
+    <label class="md-nav__link" for="nav-7-6">
+      Topic通讯
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-6">
+        Topic通讯
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/outline/" title="Topic理解" class="md-nav__link">
+      Topic理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/pypublisher/" title="Publisher实现" class="md-nav__link">
+      Publisher实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/pysubscriber/" title="Subscriber实现" class="md-nav__link">
+      Subscriber实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/bash/" title="Topic命令行工具" class="md-nav__link">
+      Topic命令行工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/turtle/" title="小乌龟介绍" class="md-nav__link">
+      小乌龟介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/qtcontrol/" title="小乌龟案例需求" class="md-nav__link">
+      小乌龟案例需求
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/pyimpl1/" title="小乌龟案例实现" class="md-nav__link">
+      小乌龟案例实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/qtcontrol2/" title="小乌龟案例需求二" class="md-nav__link">
+      小乌龟案例需求二
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/pyimpl2/" title="小乌龟案例实现二" class="md-nav__link">
+      小乌龟案例实现二
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/summary/" title="Topic通讯小结" class="md-nav__link">
+      Topic通讯小结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/topic/simpledriver/" title="简单控制板驱动" class="md-nav__link">
+      简单控制板驱动
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Service通讯
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        Service通讯
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/base/" title="Service理解" class="md-nav__link">
+      Service理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/intro/" title="简单需求" class="md-nav__link">
+      简单需求
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/pyserver/" title="Server端实现" class="md-nav__link">
+      Server端实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/pyclient/" title="Client端实现" class="md-nav__link">
+      Client端实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/bash/" title="Service命令行工具" class="md-nav__link">
+      Service命令行工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/turtle/" title="小乌龟分析" class="md-nav__link">
+      小乌龟分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/turtleqt/" title="小乌龟案例需求" class="md-nav__link">
+      小乌龟案例需求
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/summary/" title="Service通讯小结" class="md-nav__link">
+      Service通讯小结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/service/simpledriver/" title="简单控制板驱动" class="md-nav__link">
+      简单控制板驱动
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-8" type="checkbox" id="nav-7-8">
+    
+    <label class="md-nav__link" for="nav-7-8">
+      ros消息
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-8">
+        ros消息
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/rosmsg/msg/" title="msg消息" class="md-nav__link">
+      msg消息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/rosmsg/srv/" title="srv消息" class="md-nav__link">
+      srv消息
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      ros日志
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        ros日志
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/log/level/" title="日志级别" class="md-nav__link">
+      日志级别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/log/api/" title="常用API" class="md-nav__link">
+      常用API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/log/rqt/" title="可视化日志" class="md-nav__link">
+      可视化日志
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-10" type="checkbox" id="nav-7-10">
+    
+    <label class="md-nav__link" for="nav-7-10">
+      无人车下位机驱动
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-10">
+        无人车下位机驱动
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/driver/" title="协议设计" class="md-nav__link">
+      协议设计
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/driver/protocol/" title="无人小车通讯协议" class="md-nav__link">
+      无人小车通讯协议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/driver/code/" title="驱动实现" class="md-nav__link">
+      驱动实现
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-11" type="checkbox" id="nav-7-11">
+    
+    <label class="md-nav__link" for="nav-7-11">
+      Param和Launch
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-11">
+        Param和Launch
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/config/pbase/" title="param介绍" class="md-nav__link">
+      param介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/config/papi/" title="paramAPI访问" class="md-nav__link">
+      paramAPI访问
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/config/lbase/" title="launch文件" class="md-nav__link">
+      launch文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/config/lnode/" title="节点配置" class="md-nav__link">
+      节点配置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-12" type="checkbox" id="nav-7-12">
+    
+    <label class="md-nav__link" for="nav-7-12">
+      TF坐标转换
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-12">
+        TF坐标转换
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/intro/" title="TF基本概念" class="md-nav__link">
+      TF基本概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/base/" title="TF原理" class="md-nav__link">
+      TF原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/demo1/" title="跟随" class="md-nav__link">
+      跟随
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/ui/" title="rviz可视化" class="md-nav__link">
+      rviz可视化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/demo2/" title="护航" class="md-nav__link">
+      护航
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/tf/demo3/" title="环绕" class="md-nav__link">
+      环绕
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-13" type="checkbox" id="nav-7-13">
+    
+    <label class="md-nav__link" for="nav-7-13">
+      URDF可视化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-13">
+        URDF可视化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/intro/" title="URDF介绍" class="md-nav__link">
+      URDF介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/first/" title="URDF可视化" class="md-nav__link">
+      URDF可视化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-13-3" type="checkbox" id="nav-7-13-3">
+    
+    <label class="md-nav__link" for="nav-7-13-3">
+      Link连杆
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-7-13-3">
+        Link连杆
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/link/" title="连杆介绍" class="md-nav__link">
+      连杆介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/link/geometry/" title="视觉形状配置" class="md-nav__link">
+      视觉形状配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/link/origin/" title="视觉位姿配置" class="md-nav__link">
+      视觉位姿配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/link/material/" title="视觉纹理配置" class="md-nav__link">
+      视觉纹理配置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-13-4" type="checkbox" id="nav-7-13-4">
+    
+    <label class="md-nav__link" for="nav-7-13-4">
+      Joint关节
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-7-13-4">
+        Joint关节
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/joint/" title="关节介绍" class="md-nav__link">
+      关节介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/joint/fixed/" title="Fixed关节" class="md-nav__link">
+      Fixed关节
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/joint/revolute/" title="Revolute关节" class="md-nav__link">
+      Revolute关节
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/joint/continuous/" title="Continuos关节" class="md-nav__link">
+      Continuos关节
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/joint/prismatic/" title="Prismatic关节" class="md-nav__link">
+      Prismatic关节
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/demo1/" title="简易小车案例" class="md-nav__link">
+      简易小车案例
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/xacro/" title="xacro语法" class="md-nav__link">
+      xacro语法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/demo2/" title="简易小车案例xacro" class="md-nav__link">
+      简易小车案例xacro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/car/" title="无人小车模型" class="md-nav__link">
+      无人小车模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ros/urdf/car2/" title="无人小车位姿调试" class="md-nav__link">
+      无人小车位姿调试
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      控制概述
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        控制概述
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../control/control_intro/" title="01-控制介绍" class="md-nav__link">
+      01-控制介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../control/pid/" title="02-PID控制器" class="md-nav__link">
+      02-PID控制器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../control/pid_control/" title="03-PID控制器总结" class="md-nav__link">
+      03-PID控制器总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../control/pid_twiddle/" title="04-Twiddle调校最优解" class="md-nav__link">
+      04-Twiddle调校最优解
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      坐标系变换
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        坐标系变换
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../coordinate/transform2d/" title="01-2D坐标变换" class="md-nav__link">
+      01-2D坐标变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../coordinate/transform3d/" title="02-3D坐标变换" class="md-nav__link">
+      02-3D坐标变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../coordinate/pose3d/" title="03-3D姿态的描述方式" class="md-nav__link">
+      03-3D姿态的描述方式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../coordinate/rotation_matrix/" title="04-旋转矩阵求解" class="md-nav__link">
+      04-旋转矩阵求解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../coordinate/pose_demo/" title="05-3D位姿变换案例" class="md-nav__link">
+      05-3D位姿变换案例
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Numpy&Matplotlib
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Numpy&Matplotlib
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/numpy/" title="01-Numpy入门" class="md-nav__link">
+      01-Numpy入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/numpy2/" title="02-Numpy进阶" class="md-nav__link">
+      02-Numpy进阶
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/numpy_advance/" title="03-Numpy高级" class="md-nav__link">
+      03-Numpy高级
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/matplotlib/" title="04-Matplotlib绘图" class="md-nav__link">
+      04-Matplotlib绘图
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      OpenCV机器视觉
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        OpenCV机器视觉
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-1" type="checkbox" id="nav-11-1">
+    
+    <label class="md-nav__link" for="nav-11-1">
+      01_OpenCV基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-1">
+        01_OpenCV基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/01_challenge/" title="面临的挑战" class="md-nav__link">
+      面临的挑战
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/02_install/" title="OpenCV安装" class="md-nav__link">
+      OpenCV安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/03_quickstart/" title="入门案例" class="md-nav__link">
+      入门案例
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/04_jihebianhuan/" title="图片的几何变换" class="md-nav__link">
+      图片的几何变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/05_texiao/" title="图像特效" class="md-nav__link">
+      图像特效
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/06_meihua/" title="图片美化" class="md-nav__link">
+      图片美化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/01_opencv_basic/07_shipin/" title="视频处理" class="md-nav__link">
+      视频处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-2" type="checkbox" id="nav-11-2">
+    
+    <label class="md-nav__link" for="nav-11-2">
+      02_OpenCV高级
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-2">
+        02_OpenCV高级
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/02_opencv_advance1/" title="学习目标" class="md-nav__link">
+      学习目标
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/02_opencv_advance1/01_facedeteaction/" title="人脸识别" class="md-nav__link">
+      人脸识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/02_opencv_advance1/02_hsv/" title="HSV颜色模型" class="md-nav__link">
+      HSV颜色模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/02_opencv_advance1/03_inrange/" title="颜色过滤" class="md-nav__link">
+      颜色过滤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/02_opencv_advance1/04_binary/" title="图像的二值化" class="md-nav__link">
+      图像的二值化
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-3" type="checkbox" id="nav-11-3">
+    
+    <label class="md-nav__link" for="nav-11-3">
+      03_OpenCV进阶
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-3">
+        03_OpenCV进阶
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/" title="学习目标" class="md-nav__link">
+      学习目标
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/02_juanji/" title="图片卷积" class="md-nav__link">
+      图片卷积
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/03_hough/" title="霍夫变换" class="md-nav__link">
+      霍夫变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/04_contours/" title="边缘与轮廓" class="md-nav__link">
+      边缘与轮廓
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/04_xingtai/" title="形态学变换" class="md-nav__link">
+      形态学变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/04_match/" title="模板匹配" class="md-nav__link">
+      模板匹配
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../opencv/03_opencv_advance2/05_bs/" title="背景消除" class="md-nav__link">
+      背景消除
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      运动控制
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        运动控制
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/motion/" title="串口通讯" class="md-nav__link">
+      串口通讯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/ros_bridge/" title="移植到ROS" class="md-nav__link">
+      移植到ROS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/10_follow/" title="移动跟随" class="md-nav__link">
+      移动跟随
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      人工智能
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        人工智能
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/01_perceptron/" title="感知机" class="md-nav__link">
+      感知机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/02_deeplearning/" title="神经网络和深度学习" class="md-nav__link">
+      神经网络和深度学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/03_tensorflow/" title="tensorflow入门" class="md-nav__link">
+      tensorflow入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/04_image_rec/" title="多分类和图像识别" class="md-nav__link">
+      多分类和图像识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/05_cnn/" title="卷积神经网络" class="md-nav__link">
+      卷积神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/06_traffic_sign_classification/" title="交通标志识别" class="md-nav__link">
+      交通标志识别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ai/07_auto_drive/" title="自动驾驶" class="md-nav__link">
+      自动驾驶
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      SLAM
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        SLAM
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/09_rqt_reconfigure/" title="动态配置参数" class="md-nav__link">
+      动态配置参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/06_rqt_plot/" title="PID调试" class="md-nav__link">
+      PID调试
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../motion/11_followlinetwo/" title="小车巡线控制" class="md-nav__link">
+      小车巡线控制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slam/00_slam_intro/" title="SLAM简介" class="md-nav__link">
+      SLAM简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slam/01_fangzhen/" title="SLAM仿真环境" class="md-nav__link">
+      SLAM仿真环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slam/02_astar/" title="A星寻路算法" class="md-nav__link">
+      A星寻路算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../slam/03_realcar_slam/" title="真车SLAM" class="md-nav__link">
+      真车SLAM
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15" checked>
+    
+    <label class="md-nav__link" for="nav-15">
+      cpp基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-15">
+        cpp基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        cpp快速入门
+      </label>
+    
+    <a href="./" title="cpp快速入门" class="md-nav__link md-nav__link--active">
+      cpp快速入门
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一、背景介绍
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-c" class="md-nav__link">
+    1. 学习C++的几大理由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    二、环境准备
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 安装编译环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 安装开发工具
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helloworld" class="md-nav__link">
+    三、HelloWorld
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1. 入门示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2. 注释
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    四、数据类型和变量
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    1. 数据类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    2、变量
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    1. 声明和初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    2. 变量命名规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 常量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    五、输入和输出
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    1. 输出
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    2. 输入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    六、条件与循环
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    1. 条件判断
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-if" class="md-nav__link">
+    1. if语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-switch" class="md-nav__link">
+    2. switch语句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    2. 运算符操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    1. 关系运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    2. 逻辑运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3. 三元运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3. 循环控制
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-while" class="md-nav__link">
+    1. while
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-continue-break" class="md-nav__link">
+    2. continue 和 break
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-do-while" class="md-nav__link">
+    3. do-while
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-for" class="md-nav__link">
+    4. for
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    练习
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    七、命名空间
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-using" class="md-nav__link">
+    1. 使用using指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    八、数组
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_7" class="md-nav__link">
+    1. 声明和初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_7" class="md-nav__link">
+    2. 访问数组
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../day02/" title="vector和函数" class="md-nav__link">
+      vector和函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../day03/" title="tensorflow入门" class="md-nav__link">
+      tensorflow入门
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-16" type="checkbox" id="nav-16">
+    
+    <label class="md-nav__link" for="nav-16">
+      ORB_SLAM2
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-16">
+        ORB_SLAM2
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/slam_intro/" title="SLAM框架概述" class="md-nav__link">
+      SLAM框架概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/orbslam/" title="ORB_SLAM2入门" class="md-nav__link">
+      ORB_SLAM2入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/orbslam_ros_1/" title="ORB_SLAM2入门-ROS_1" class="md-nav__link">
+      ORB_SLAM2入门-ROS_1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/orbslam_ros_2/" title="ORB_SLAM2入门-ROS_2" class="md-nav__link">
+      ORB_SLAM2入门-ROS_2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/astra_ros/" title="Astra相机的ROS环境" class="md-nav__link">
+      Astra相机的ROS环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/rosbag/" title="ROS的rogbag使用" class="md-nav__link">
+      ROS的rogbag使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/octomap/" title="OctoMap-基于八叉树的地图" class="md-nav__link">
+      OctoMap-基于八叉树的地图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/pointcloud_octomap/" title="OctoMap-实时点云及拓扑图" class="md-nav__link">
+      OctoMap-实时点云及拓扑图
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-17" type="checkbox" id="nav-17">
+    
+    <label class="md-nav__link" for="nav-17">
+      相机标定&内参
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-17">
+        相机标定&内参
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/camera/camera_calibration/" title="RGBD相机标定" class="md-nav__link">
+      RGBD相机标定
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/camera/01-pinhole_camera_model/" title="相机模型&坐标系" class="md-nav__link">
+      相机模型&坐标系
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/camera/02-coordinates/" title="坐标变换&内外参" class="md-nav__link">
+      坐标变换&内外参
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/camera/03-distortions/" title="相机透镜&畸变" class="md-nav__link">
+      相机透镜&畸变
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../orbslam/camera/04-undistortion/" title="相机标定&去畸变" class="md-nav__link">
+      相机标定&去畸变
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
+    
+    <label class="md-nav__link" for="nav-18">
+      下位机开发
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-18">
+        下位机开发
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../stm32/STM32/" title="stm32控制和开发" class="md-nav__link">
+      stm32控制和开发
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
+    
+    <label class="md-nav__link" for="nav-19">
+      附录
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-19">
+        附录
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../addenda/rosmsg/" title="ROS消息类型对照表" class="md-nav__link">
+      ROS消息类型对照表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../addenda/env-python/" title="Python开发工具及环境" class="md-nav__link">
+      Python开发工具及环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../addenda/env-conda/" title="Anaconda环境的使用" class="md-nav__link">
+      Anaconda环境的使用
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一、背景介绍
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-c" class="md-nav__link">
+    1. 学习C++的几大理由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    二、环境准备
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 安装编译环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 安装开发工具
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helloworld" class="md-nav__link">
+    三、HelloWorld
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1. 入门示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2. 注释
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    四、数据类型和变量
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    1. 数据类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    2、变量
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    1. 声明和初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    2. 变量命名规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 常量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    五、输入和输出
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    1. 输出
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    2. 输入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    六、条件与循环
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    1. 条件判断
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-if" class="md-nav__link">
+    1. if语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-switch" class="md-nav__link">
+    2. switch语句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    2. 运算符操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    1. 关系运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    2. 逻辑运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3. 三元运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3. 循环控制
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-while" class="md-nav__link">
+    1. while
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-continue-break" class="md-nav__link">
+    2. continue 和 break
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-do-while" class="md-nav__link">
+    3. do-while
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-for" class="md-nav__link">
+    4. for
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    练习
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    七、命名空间
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-using" class="md-nav__link">
+    1. 使用using指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    八、数组
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_7" class="md-nav__link">
+    1. 声明和初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_7" class="md-nav__link">
+    2. 访问数组
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1 style="display: none">cpp快速入门</h1>
+                
+                <h2 id="_1">一、背景介绍<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>C++ </strong>是一种通用的，面向对象的编程语言，由<code>Bjarne Stroustrup</code>于1979年设计，是C语言的扩展，并提供了一些额外的功能，例如类，继承等。C/C++</p>
+<p>C ++在现代起着不可或缺的作用，因为许多现代系统（例如操作系统，Web浏览器，数据库等）在其代码库的至少某些部分中都包含C ++代码。而且，由于C ++的运行速度，它在性能至关重要的领域中非常有用。</p>
+</blockquote>
+<h3 id="1-c">1. 学习C++的几大理由<a class="headerlink" href="#1-c" title="Permanent link">&para;</a></h3>
+<ol>
+<li>C ++是世界上最受欢迎的语言之一，40年时间常年霸占TIOE 排行榜前列。</li>
+<li>C++ 加入了面向对象特性的支持，并且程序的运行速度是其他语言无法比拟的。</li>
+<li>学习C++有助于我们理解上层编程语言许多背后的故事。（如：Java空指针异常，Python高阶函数）</li>
+<li>嵌入式、无人驾驶、游戏引擎首选。</li>
+</ol>
+<h2 id="_2">二、环境准备<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. 安装编译环境<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>GNU 系列（mingw ,cygwin） 、Clang 、 MSVC... ： visual studio 2019</p>
+<p>GNU 是 linux (unix) 系统里面的编译的标准， C/C++</p>
+<ul>
+<li>mingw      GNU for windows  裁剪了很多GNU的特性，组件。</li>
+<li>cygwin      和mingw一样，都是裁剪出来给Windows用，比gnu要多，功能要更大，更强。</li>
+</ul>
+<p>visual studio （MSVC）。。。</p>
+</blockquote>
+<h3 id="2">2. 安装开发工具<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>开发工具种类繁多，有<code>VS</code> | <code>Dev-C++</code> | <code>code lite</code> | <code>clion</code>| <code>Qt Creator</code>
+</p>
+</blockquote>
+<h2 id="helloworld">三、HelloWorld<a class="headerlink" href="#helloworld" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 入门示例<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>示例代码如下:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;hello world !&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>理解：</p>
+<p><code>#include</code> ： 引入输入输出库</p>
+<p><code>int main(){}</code> ： 主函数入口</p>
+<p><code>std::</code> .... 输出打印</p>
+<p><code>return 0</code> : 函数返回值，一般0 表示正常执行返回。</p>
+<h3 id="2_1">2. 注释<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>每一种语言都有注释，以便程序员对其编写的代码进行解释说明。c++采用 <code>//</code> 和 <code>/* */</code> 实现单行和多行注释。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+
+    <span class="c1">// 我是c++的单行注释</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;hello world&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="cm">/*</span>
+<span class="cm">        我是c++的多行注释</span>
+<span class="cm">        我可以写多行</span>
+<span class="cm">    */</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;hello world&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_3">四、数据类型和变量<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1_2">1. 数据类型<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>与其他<strong>静态类型语言</strong>一样，C++也具备大多数语言的数据类型。除下表给出的数据类型之外，其实还有 <code>short</code> | <code>long</code> | <code>long long</code>  等 。 关于数据类型占用的字节长度其实不用刻意的去背，c++提供<code>sizeof()函数</code>来获取某种数据类型占用的空间大小。</p>
+<p>静态类型语言： c++  / java 变量数据必须要声明类型</p>
+<p>动态类型语言： python  / javascript   不需要声明类型，由编译器|解释器推断。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>声明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>整数类型</td>
+<td>int</td>
+</tr>
+<tr>
+<td>单精度浮点数</td>
+<td>float</td>
+</tr>
+<tr>
+<td>双精度浮点数</td>
+<td>double  能表示的小数位 更多， 占用的空间更大 。</td>
+</tr>
+<tr>
+<td>字符</td>
+<td>char   单个字符，不是字符串</td>
+</tr>
+<tr>
+<td>字符串</td>
+<td>string  c++里面的字符串 ，C语言字符串char[]</td>
+</tr>
+<tr>
+<td>布尔</td>
+<td>bool</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">&quot;int类型占用空间：&quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">&quot;char类型占用空间：&quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">&quot;double类型占用空间：&quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">&quot;bool类型占用空间：&quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">bool</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">retrn</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="2_2">2、变量<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<h4 id="1_3">1. 声明和初始化<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>任何编程语言都会涉及数据的存取，把数据存放在内存中，从内存中取出存放的数据，为了更快的操作这些数据，一般会给他们起一个名称，以便未来能够操作数据，这些名字在编程语言里面，被称之为<strong>变量</strong> 。 </p>
+<p>c++ 是   强|静态  类型语言，任何变量在使用前必须先声明，并且在声明的时候必须要指定该变量的数据类型，即该变量未来能够存储的数据类型。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="c1">//1. 先声明 ， 后赋值</span>
+    <span class="kt">int</span> <span class="n">age</span> <span class="p">;</span>
+    <span class="kt">double</span> <span class="n">price</span><span class="p">;</span>
+
+    <span class="n">age</span> <span class="o">=</span> <span class="mi">10</span> <span class="p">;</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mf">20.3</span><span class="p">;</span>
+
+    <span class="c1">//2. 声明并立即初始化赋值</span>
+    <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">20</span> <span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>变量声明以及初始化常用手法：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">age</span> <span class="p">;</span> <span class="c1">//未初始化</span>
+
+    <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">21</span> <span class="p">;</span> <span class="c1">// C 方式初始化</span>
+
+    <span class="kt">int</span> <span class="n">age</span> <span class="p">(</span><span class="mi">21</span><span class="p">);</span> <span class="c1">//构造方法初始化</span>
+
+    <span class="kt">int</span> <span class="n">age</span> <span class="p">{</span><span class="mi">21</span><span class="p">}</span> <span class="p">;</span> <span class="c1">//c++ 11标准开始的方式</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>    
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>我们不仅能查看数据类型占用的空间大小，也能查看变量占用的空间大小。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">18</span> <span class="p">;</span> 
+
+    <span class="c1">// 下面两句话打印出来的大小是一样的。</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">&quot;age占用空间：&quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">age</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">&quot;char类型占用空间：&quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">retrn</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="2_3">2. 变量命名规则<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ol>
+<li><strong>可以包含字母 、 数字 和下划线</strong></li>
+<li><strong>必须以字母或者下划线开始</strong></li>
+</ol>
+<p>注意：在C++中，大写字母和小写字母被认为是两个不同的字符。因此，sum和SUM是两个不同的变量名。一般地，变量名用小写字母表示，与人们日常习惯一致，以增加可读性。应注意变量名不能与C++的关键字、系统函数名和类名相同</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>有效命名</th>
+<th>无效命名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Age</td>
+<td>2020_Age</td>
+</tr>
+<tr>
+<td>age</td>
+<td>Age+1</td>
+</tr>
+<tr>
+<td>_age</td>
+<td>$age</td>
+</tr>
+<tr>
+<td>My_Age</td>
+<td>My Age</td>
+</tr>
+<tr>
+<td>Int</td>
+<td>return</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3">3. 常量<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>常量其实和变量没有多大区别， 有名字， 占据存储空间，可以是任何的基本类型，但只有一点不同，常量的值不允许变更。C++中的常量的声明需要使用 <code>const</code> 关键字，而python中的常量默认约定是全大写表示。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">pi</span> <span class="p">{</span><span class="mf">3.1415926</span><span class="p">};</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">months_in_year</span><span class="p">{</span><span class="mi">12</span><span class="p">};</span>
+
+    <span class="n">pi</span> <span class="o">=</span> <span class="mf">2.5</span> <span class="p">;</span> <span class="c1">//将会出现编译错误</span>
+
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_4">五、输入和输出<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>任何编程语言都要输入和输出，python的输入输出是<code>input</code>  和 <code>print</code> , C语言的输入输出是 <code>scanf</code> 和  <code>printf</code> ， 而C++的相对要复杂些，它使用  <code>std::cin</code>   和 <code>std::cout</code> 来操作输入输出 。 C++的输入输出，需要导入<code>iostream</code>库 。</p>
+</blockquote>
+<h3 id="1_4">1. 输出<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>一般在输出的后面跟上  <code>std::endl</code> 来表示输出结束，<strong>它除了含有换行的功能之外，还具备了刷新数据打印缓冲区的功能。</strong></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+
+    <span class="c1">//由于没有换行，两个单词会出于同一行。</span>
+     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello&quot;</span><span class="p">;</span>
+     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; world&quot;</span><span class="p">;</span>
+
+
+    <span class="c1">//兼备换行的输出</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; world&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+
+    <span class="c1">//可以连续输出打印，这其实是一种叫做：链式调用的手法</span>
+     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello &quot;</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; World&quot;</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; , I love C++!&quot;</span><span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="2_4">2. 输入<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>输入旨在获取键盘的数据输入。 不过获取输入前的提示语句得使用 <code>std:: cout</code>来输出提示。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入您的年龄：&quot;</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">age</span> <span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">age</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;您的年龄是：&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">age</span> <span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_5">六、条件与循环<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1_5">1. 条件判断<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h3>
+<h4 id="1-if">1. if语句<a class="headerlink" href="#1-if" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>条件判断即是生活中的对某个事物进行判断，比如：父子间对此次考试成绩进行约定，如果超过90分，则可以自由活动一天，如果超过80分，可以休息半天，如果低于80分，则要乖乖去 写作业。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入此次考试的成绩：&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">score</span> <span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">score</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">score</span>  <span class="o">&gt;</span>  <span class="mi">90</span><span class="p">){</span>
+         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;可以休息一天&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">score</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">){</span>
+         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;可以休息半天&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;乖乖去写作业&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="2-switch">2. switch语句<a class="headerlink" href="#2-switch" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>许多语言中都包含switch，比如：java 、javascript 、php 等，而python是个例外，python没有switch。，实际上<code>switch</code>和 <code>if</code> 语句块很相似, 它是完全的等价条件判断，但是一旦满足某个<code>case</code>的条件，那么其他<code>case</code> 就不会再进行判断。</p>
+<p>注意： switch判定的条件，只允许判定 <code>char</code> | <code>int</code> |<code>枚举</code> 类型</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入此次考试的成绩评级&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">level</span> <span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">level</span><span class="p">;</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">level</span><span class="p">){</span>
+        <span class="k">case</span> <span class="sc">&#39;A&#39;</span><span class="o">:</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;优秀&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="sc">&#39;B&#39;</span><span class="o">:</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;良好&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="sc">&#39;C&#39;</span><span class="o">:</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;及格&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="sc">&#39;D&#39;</span><span class="o">:</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;仍需继续努力&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;输入错误。&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="2_5">2. 运算符操作<a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h3>
+<h4 id="1_6">1. 关系运算符<a class="headerlink" href="#1_6" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>表示大小、相等操作的运算符，python和c++表示方法是一样的。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Python</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>equal</td>
+<td>==</td>
+<td>==</td>
+</tr>
+<tr>
+<td>not equal</td>
+<td>!=</td>
+<td>!=</td>
+</tr>
+<tr>
+<td>greater than</td>
+<td>&gt;</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td>less than</td>
+<td>&lt;</td>
+<td>&lt;</td>
+</tr>
+<tr>
+<td>greater than or equal</td>
+<td>&gt;=</td>
+<td>&gt;=</td>
+</tr>
+<tr>
+<td>less than or equal</td>
+<td>&lt;=</td>
+<td>&lt;=</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2_6">2. 逻辑运算符<a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>有时候需要对多个条件进行一起判断，比如：前面的考试约定，不仅要考察语文的成绩还要考察数学的成绩，不仅仅是单科成绩了。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Python</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>并且</td>
+<td>and</td>
+<td>&amp;&amp;</td>
+</tr>
+<tr>
+<td>或者</td>
+<td>or</td>
+<td>||</td>
+</tr>
+<tr>
+<td>非（取反）</td>
+<td>not</td>
+<td>!</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">chinese_score</span> <span class="p">;</span>
+    <span class="kt">int</span> <span class="n">math_score</span> <span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入此次语文考试的成绩：&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">chinese_socre</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入此次数学考试的成绩：&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">math_score</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">chinese_socre</span> <span class="o">&gt;</span> <span class="mi">90</span> <span class="o">&amp;&amp;</span> <span class="n">math_score</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="p">){</span>
+         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;可以休息一天&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">score</span> <span class="o">&gt;</span> <span class="mi">80</span> <span class="o">&amp;&amp;</span> <span class="n">math_score</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">){</span>
+         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;可以休息半天&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;乖乖去写作业&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="3_1">3. 三元运算符<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>一般来说，非真即假的情况下，如果表达式比较简单，通常会采用三元运算符来实现。在相比之下，c++的三元运算符比python的要简单些。比如下面的例子：如果考试成绩大于90，评为A ，否则评为B，此时针对一个条件的判断，只有两种结果，那么使用三元表达式在简洁程度上要胜过 <code>if</code> 语句。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+
+    <span class="kt">int</span> <span class="n">score</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入此次语文考试的成绩：&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">score</span><span class="p">;</span>
+
+    <span class="cm">/*</span>
+<span class="cm">        //python的三元表达式：</span>
+
+<span class="cm">        result = &#39;A&#39; if 100 &gt; 90   &#39;B&#39;</span>
+<span class="cm">        print(result)</span>
+<span class="cm">    */</span>
+
+    <span class="c1">//c++</span>
+    <span class="kt">char</span> <span class="n">result</span> <span class="o">=</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">90</span> <span class="o">?</span> <span class="sc">&#39;A&#39;</span> <span class="o">:</span> <span class="sc">&#39;B&#39;</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;您的语文成绩评级为：&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">result</span> <span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3_2">3. 循环控制<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>如果需要让某件事重复执行多次，那么循环操作再合适不过了。在c++里面，循环操作有：<code>while</code> | <code>do-while</code> | <code>for</code> 三种实现方式 。 比如模拟路口信号灯闪烁场景</p>
+</blockquote>
+<h4 id="1-while">1. while<a class="headerlink" href="#1-while" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;synchapi.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">){</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;红灯还在亮着...&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+        <span class="c1">//单位是毫秒</span>
+        <span class="n">Sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+        <span class="n">cout</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="2-continue-break">2. continue 和 break<a class="headerlink" href="#2-continue-break" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>有时候我们需要对循环的每一次操作，都做一次过滤检查，满足条件的让循环跳过当前，进行下一次循环，或者直接退出循环。在大部分编程语言里面， continue和 break正扮演着这样的角色。比如下面打印1 到 20 的偶数。 如果打印到了16，则直接退出整个循环。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;synchapi.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+
+    <span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">){</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">number</span> <span class="o">==</span> <span class="mi">16</span><span class="p">){</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">//满足条件，表示当前的number是奇数。</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span>  <span class="p">){</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;当前打印的数字是： &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+        <span class="n">number</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;循环已结束! &quot;</span><span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="3-do-while">3. do-while<a class="headerlink" href="#3-do-while" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>do-while结构与while差不多，区别只在于前者是上来先执行操作后判断，后者是先判断再执行循环操作</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;synchapi.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span>  
+    <span class="k">do</span><span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;红灯还在亮着...&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+         <span class="c1">//单位是毫秒</span>
+        <span class="n">Sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+        <span class="n">cout</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="n">cout</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="4-for">4. for<a class="headerlink" href="#4-for" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>在众多循环语句中，<code>for</code> 循环是使用频率最高的一种。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;synchapi.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>    
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">cout</span>  <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">cout</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="p">;</span> <span class="n">cout</span> <span class="o">++</span><span class="p">){</span>
+         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;红灯还在亮着...&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+         <span class="c1">//单位是毫秒</span>
+        <span class="n">Sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="p">}</span>    
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_6">练习<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>编程计算图形的周长。程序可计算圆形、矩形的周长，根据用户选择的图形类型来计算。，然后根据不同图形输入不同参数的值，计算图形的周长</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="p">(){</span>
+    <span class="mf">1.</span> <span class="err">请输入您要计算的图形类型（</span><span class="mf">1.</span> <span class="err">圆</span> <span class="p">,</span> <span class="mf">2.</span> <span class="err">矩形</span> <span class="p">,</span> <span class="mi">0</span> <span class="p">.</span><span class="err">退出程序）</span>
+    <span class="mi">1</span>
+
+    <span class="err">请输入圆的半径</span> 
+        <span class="mi">10</span>
+    <span class="err">圆的周长是</span> <span class="err">：</span><span class="n">xxx</span>
+
+    <span class="mi">2</span>
+    <span class="err">请输入矩形的长度</span>
+
+    <span class="err">请输入矩形的宽度</span>
+
+    <span class="err">矩形的周长是</span><span class="p">.</span><span class="o">:</span> <span class="n">xxxx</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_7">七、命名空间<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>假设这样一种情况，当一个班上有两个名叫 张三的学生时，为了明确区分它们，我们在使用名字之外，不得不使用一些额外的信息，比如他们的家庭住址，或者某些特征等等。</p>
+<p>同样的情况也出现在 C++ 应用程序中。例如，您可能会写一个名为 a 的变量，在另一个可用的库中也存在一个相同的变量 a。这样，编译器就无法判断您所使用的是哪一个。</p>
+<p>因此，引入了<strong>命名空间</strong>这个概念，专门用于解决上面的问题，它可作为附加信息来区分不同库中相同名称的函数、类、变量等。使用了命名空间即定义了上下文。<strong>本质上，命名空间就是定义了一个范围。</strong></p>
+</blockquote>
+<h3 id="1-using">1. 使用using指令<a class="headerlink" href="#1-using" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>可以使用 <strong>using namespace</strong> 指令，这样在使用命名空间时就可以不用在前面加上命名空间的名称。这个指令会告诉编译器，后续的代码将使用指定的命名空间中的名称。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">count</span><span class="o">&lt;&lt;</span><span class="s">&quot;hi c++&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_8">八、数组<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><code>c++</code>的数组实际上和<code>python</code>的 <code>list</code> 差不多，都是具有下标（索引） ， 稍有不同的是，<code>python</code>的<code>list</code>不区分类型，而<code>c++</code>的数组必须是同一类型。 </p>
+</blockquote>
+<h3 id="1_7">1. 声明和初始化<a class="headerlink" href="#1_7" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>数组是一系列相同类型的元素，放置在连续的内存位置，数组中的元素都可以通过索引来单独操作它们。 若查看某个变量存储地址可以使用 取地址符 <code>&amp;</code></p>
+</blockquote>
+<p><img alt="icon" src="../img/array.png" /></p>
+<ul>
+<li>声明</li>
+</ul>
+<blockquote>
+<p>仅仅声明，而没有初始化的数组，内部的元素无法得到保证，系统会随机进行赋值。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(){</span>
+
+    <span class="kt">int</span> <span class="n">scores</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+
+    <span class="c1">//这里遍历打印出来，数组的元素是随机的。</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="nl">s</span> <span class="p">:</span> <span class="n">scores</span><span class="p">){</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;s=&quot;</span> <span class="o">&lt;&lt;</span><span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>初始化</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="c1">//数组类型 数组名称  [元素个数]{初始化列表}</span>
+
+    <span class="c1">//1. 声明后再初始化</span>
+    <span class="kt">int</span> <span class="n">scores</span> <span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+    <span class="n">scores</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span>
+    <span class="n">scores</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span>
+    <span class="n">scores</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span>
+    <span class="n">scores</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">44</span><span class="p">;</span>
+    <span class="n">scores</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">55</span><span class="p">;</span>
+
+
+    <span class="c1">//2. 声明并初始化</span>
+    <span class="kt">int</span> <span class="n">scores</span> <span class="p">[</span><span class="mi">5</span><span class="p">]{</span><span class="mi">100</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">80</span><span class="p">};</span>
+
+    <span class="kt">int</span> <span class="n">socres</span> <span class="p">[</span><span class="mi">10</span><span class="p">]{</span><span class="mi">88</span><span class="p">,</span><span class="mi">75</span><span class="p">};</span> <span class="c1">//剩下的都会以0占位，只初始化了前两位</span>
+
+    <span class="kt">int</span> <span class="n">socres</span> <span class="p">[</span><span class="mi">10</span><span class="p">]{</span><span class="mi">0</span><span class="p">};</span> <span class="c1">// 表示10个长度的数组，每个元素都是0</span>
+
+    <span class="c1">//3. 自动推算数组大小</span>
+    <span class="kt">int</span> <span class="n">socres</span><span class="p">[]{</span><span class="mi">22</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">66</span><span class="p">};</span> <span class="c1">//数组长度没有指定，根据后面初始化长度来推断。</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="2_7">2. 访问数组<a class="headerlink" href="#2_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>获取数组中的某个元素</li>
+</ul>
+<blockquote>
+<p>数组是具有下标（索引）的容器，可以使用下标 （索引）来获取 , 下标（索引）从 <code>0</code>  开始。型如： <code>数组名称[元素索引]</code></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="c1">//声明并初始化数组</span>
+    <span class="kt">int</span> <span class="n">scores</span> <span class="p">[</span><span class="mi">5</span><span class="p">]{</span><span class="mi">100</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">80</span><span class="p">};</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;数组的第一个元素是: &quot;</span><span class="o">&lt;&lt;</span> <span class="n">scores</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;数组的第二个元素是: &quot;</span><span class="o">&lt;&lt;</span> <span class="n">scores</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;数组的第三个元素是: &quot;</span><span class="o">&lt;&lt;</span> <span class="n">scores</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;数组的第四个元素是: &quot;</span><span class="o">&lt;&lt;</span> <span class="n">scores</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;数组的第五个元素是: &quot;</span><span class="o">&lt;&lt;</span> <span class="n">scores</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+
+    <span class="c1">//越界，不会报错，但是输出内容不是我们想看到的</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;数组的第一个元素是: &quot;</span><span class="o">&lt;&lt;</span> <span class="n">scores</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> 
+
+    <span class="c1">//修改指定位置的元素</span>
+    <span class="n">scores</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">66</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>遍历数组</li>
+</ul>
+<blockquote>
+<p>c++的数组，并没有提供获取长度的方法，所以不能直接遍历。一种是直接指定遍历的长度，一种是通过代码计算出数组的长度 ,一种是使用c++11提供的基于范围的for循环</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="c1">//定义数组</span>
+    <span class="kt">int</span>  <span class="n">scores</span><span class="p">[]{</span><span class="mi">100</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">88</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">75</span><span class="p">};</span>
+
+    <span class="c1">//直接指定数组</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//手动计算数组长度</span>
+    <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+
+    <span class="c1">//+++++++++++++++++++++++++++++++++++++++++++++++++++</span>
+
+    <span class="c1">//c++11 提供的for循环 </span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="nl">score</span> <span class="p">:</span> <span class="n">scores</span><span class="p">){</span>
+          <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="n">cores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>数组是一种固定长度的容器，并且它存放的数据是采用一串连续的地址来存放的。</strong></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../slam/03_realcar_slam/" title="真车SLAM" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                真车SLAM
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../day02/" title="vector和函数" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                vector和函数
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            <a href="https://www.czxy.com/">传智专修学院</a> 版权所有 2006 - 2020 江苏传智播客教育科技股份有限公司  学校地址：江苏省宿迁市沭阳县北京南路6号  邮编：223600   <a href="http://www.beian.miit.gov.cn/">苏ICP备16007882号-4</a>
+          </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdn.bootcdn.net/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../js/baidu-tongji.js"></script>
+      
+        <script src="../../js/baidu-tuisong.js"></script>
+      
+    
+  </body>
+</html>
